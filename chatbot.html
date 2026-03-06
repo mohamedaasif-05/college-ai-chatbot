@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Campus AI Assistant</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+/* Animated Background */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  background: linear-gradient(-45deg, #0f2027, #1a1a40, #2c5364, #000428);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* Glass Container */
+.chat-container {
+  width: 1100px;
+  max-width: 95%;
+  height: 90vh;
+  backdrop-filter: blur(25px);
+  background: rgba(255,255,255,0.08);
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 0 40px rgba(0,255,255,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* College Name */
+.college-name {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 18px 0 5px 0;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #00f2fe, #4facfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(0,255,255,0.6);
+}
+
+/* Chat Title */
+.chat-title {
+  padding: 12px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  background: rgba(0,0,0,0.3);
+  text-shadow: 0 0 10px cyan;
+}
+
+/* Chat Area */
+#chatBox {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Messages */
+.message-wrapper {
+  display: flex;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(10px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+.user-wrapper {
+  justify-content: flex-end;
+}
+
+.message {
+  padding: 12px 18px;
+  border-radius: 20px;
+  max-width: 70%;
+  font-size: 14px;
+}
+
+.user {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+}
+
+.bot {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(0,255,255,0.3);
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* Input Section */
+.input-section {
+  display: flex;
+  padding: 12px;
+  gap: 8px;
+  background: rgba(0,0,0,0.3);
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+
+button, label {
+  border: none;
+  padding: 10px 14px;
+  border-radius: 25px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #00f2fe, #4facfe);
+  color: black;
+  font-weight: bold;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.spinner {
+  width: 15px;
+  height: 15px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top: 3px solid cyan;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="chat-container">
+
+<div class="college-name">
+Nandha College of Technology
+</div>
+
+<div class="chat-title">
+🚀 Campus AI Assistant
+</div>
+
+<div id="chatBox"></div>
+
+<div class="input-section">
+
+<label for="fileUpload">📎</label>
+<input type="file" id="fileUpload">
+
+<label for="imageUpload">🖼</label>
+<input type="file" id="imageUpload" accept="image/*">
+
+<label for="videoUpload">🎥</label>
+<input type="file" id="videoUpload" accept="video/*">
+
+<input type="text" id="userInput" placeholder="Ask something..." />
+
+<button onclick="startVoice()">🎤</button>
+
+<button onclick="sendMessage()">Send</button>
+
+</div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+/* 🔐 YOUR ORIGINAL FIREBASE CONFIG */
+const firebaseConfig = {
+  apiKey: "AIzaSyBSe46DYJW4v_hWs7E_rxrgjcC1omAs_xQ",
+  authDomain: "smartcampus-ai-92d69.firebaseapp.com",
+  projectId: "smartcampus-ai-92d69",
+  storageBucket: "smartcampus-ai-92d69.firebasestorage.app",
+  messagingSenderId: "908915324499",
+  appId: "1:908915324499:web:cb2f6e48b3da8f45ee38a6"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const chatBox = document.getElementById("chatBox");
+const inputField = document.getElementById("userInput");
+
+/* SEND MESSAGE */
+window.sendMessage = async function () {
+
+  const input = inputField.value.trim();
+  if (!input) return;
+
+  addUserMessage(input);
+  inputField.value = "";
+
+  const loading = addLoading();
+
+  try {
+    const snapshot = await getDocs(collection(db, "faqs"));
+    let foundAnswer = null;
+
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      if (data.question && data.answer) {
+        if (input.toLowerCase().includes(data.question.toLowerCase())) {
+          foundAnswer = data.answer;
+        }
+      }
+    });
+
+    chatBox.removeChild(loading);
+
+    if (foundAnswer) {
+      showBotMessage(foundAnswer);
+    } else {
+      showBotMessage("Sorry, I couldn’t understand your question. Please ask about departments, hostel, fees, placements or facilities.");
+    }
+
+  } catch {
+    chatBox.removeChild(loading);
+    showBotMessage("Database connection error.");
+  }
+};
+
+/* USER MESSAGE */
+function addUserMessage(text) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "message-wrapper user-wrapper";
+  wrapper.innerHTML = `<div class="message user">${text}</div>`;
+  chatBox.appendChild(wrapper);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+/* BOT MESSAGE (POINT FORMAT) */
+function showBotMessage(text) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "message-wrapper";
+
+  const lines = text.split("\n").filter(l => l.trim() !== "").map(line => `<li>${line}</li>`).join("");
+
+  wrapper.innerHTML = `
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" class="avatar">
+    <div class="message bot">
+      <ul style="margin:0;padding-left:18px;">${lines}</ul>
+    </div>
+  `;
+
+  chatBox.appendChild(wrapper);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+/* LOADING */
+function addLoading() {
+  const wrapper = document.createElement("div");
+  wrapper.className = "message-wrapper";
+  wrapper.innerHTML = `
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" class="avatar">
+    <div class="message bot loading">
+      <div class="spinner"></div> Processing...
+    </div>
+  `;
+  chatBox.appendChild(wrapper);
+  return wrapper;
+}
+
+/* ENTER KEY */
+inputField.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") sendMessage();
+});
+
+/* MIC */
+window.startVoice = function() {
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  recognition.lang = "en-US";
+  recognition.start();
+  recognition.onresult = function(event) {
+    inputField.value = event.results[0][0].transcript;
+  };
+};
+
+/* IMAGE PREVIEW */
+document.getElementById("imageUpload").addEventListener("change", function(e){
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      addUserMessage(`<img src="${event.target.result}" style="max-width:200px;border-radius:10px;">`);
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+/* VIDEO PREVIEW */
+document.getElementById("videoUpload").addEventListener("change", function(e){
+  const file = e.target.files[0];
+  if (file) {
+    const url = URL.createObjectURL(file);
+    addUserMessage(`<video controls width="200"><source src="${url}"></video>`);
+  }
+});
+
+/* FILE NAME */
+document.getElementById("fileUpload").addEventListener("change", function(e){
+  const file = e.target.files[0];
+  if (file) {
+    addUserMessage(`📎 ${file.name}`);
+  }
+});
+
+</script>
+
+</body>
+</html>

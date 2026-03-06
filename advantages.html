@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nandha College of Technology - College Advantages</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color: white;
+    text-align: center;
+}
+
+/* Back Button */
+.top-back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.top-back-btn button {
+    padding: 8px 18px;
+    background: linear-gradient(45deg,#ffcc00,#ffaa00);
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ffcc00;
+}
+
+/* Header */
+.header {
+    padding: 60px 20px 20px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.section {
+    padding: 30px 20px;
+}
+
+.advantages {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 20px rgba(0,255,255,0.3);
+}
+
+.advantages ul {
+    text-align: left;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+/* Chart Section */
+.chart-container {
+    width: 90%;
+    max-width: 950px;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 25px rgba(0,255,255,0.4);
+}
+
+canvas {
+    margin-top: 20px;
+}
+
+.footer {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="top-back-btn">
+    <a href="chatbot.html">
+        <button>← Back to Chatbot</button>
+    </a>
+</div>
+
+<div class="header">
+Nandha College of Technology
+</div>
+
+<div class="section advantages">
+<h2>General College Advantages</h2>
+<ul>
+<li>✔ Strong Industry Collaborations</li>
+<li>✔ Experienced and Qualified Faculty Members</li>
+<li>✔ Modern Laboratories & Digital Library</li>
+<li>✔ Excellent Placement Record</li>
+<li>✔ Career Guidance & Soft Skills Training</li>
+<li>✔ Internship Opportunities with Leading Companies</li>
+<li>✔ Spacious Campus with Advanced Infrastructure</li>
+<li>✔ Focus on Innovation & Research</li>
+</ul>
+</div>
+
+<!-- Placement Growth Chart -->
+<div class="chart-container">
+<h3>Placement Growth (Last 5 Years)</h3>
+<canvas id="placementChart"></canvas>
+</div>
+
+<!-- Highest Package Chart -->
+<div class="chart-container">
+<h3>Highest Package Growth (Last 5 Years)</h3>
+<canvas id="packageChart"></canvas>
+</div>
+
+<div class="footer">
+© 2026 Nandha College of Technology | All Rights Reserved
+</div>
+
+<script>
+
+// Gradient for Line Chart
+const placementCtx = document.getElementById('placementChart').getContext('2d');
+const gradientLine = placementCtx.createLinearGradient(0,0,0,400);
+gradientLine.addColorStop(0,"rgba(0,255,255,0.7)");
+gradientLine.addColorStop(1,"rgba(0,123,255,0.1)");
+
+new Chart(placementCtx, {
+    type: 'line',
+    data: {
+        labels: ['2021','2022','2023','2024','2025'],
+        datasets: [{
+            label: 'Placement Percentage',
+            data: [72,78,85,90,95],
+            borderColor: '#00ffff',
+            backgroundColor: gradientLine,
+            pointBackgroundColor: '#ffcc00',
+            pointBorderColor: '#fff',
+            pointRadius: 6,
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        animation: {
+            duration: 2000
+        },
+        plugins: {
+            legend: {
+                labels: { color: 'white' }
+            }
+        },
+        scales: {
+            x: {
+                ticks: { color: 'white' }
+            },
+            y: {
+                beginAtZero: true,
+                max: 100,
+                ticks: { color: 'white' }
+            }
+        }
+    }
+});
+
+// Gradient for Bar Chart
+const packageCtx = document.getElementById('packageChart').getContext('2d');
+const gradientBar = packageCtx.createLinearGradient(0,0,0,400);
+gradientBar.addColorStop(0,"#ffcc00");
+gradientBar.addColorStop(1,"#ff6600");
+
+new Chart(packageCtx, {
+    type: 'bar',
+    data: {
+        labels: ['2021','2022','2023','2024','2025'],
+        datasets: [{
+            label: 'Highest Package (LPA)',
+            data: [6,8,9,10,12],
+            backgroundColor: gradientBar,
+            borderRadius: 10
+        }]
+    },
+    options: {
+        responsive: true,
+        animation: {
+            duration: 2000
+        },
+        plugins: {
+            legend: {
+                labels: { color: 'white' }
+            }
+        },
+        scales: {
+            x: {
+                ticks: { color: 'white' }
+            },
+            y: {
+                beginAtZero: true,
+                ticks: { color: 'white' }
+            }
+        }
+    }
+});
+
+</script>
+
+</body>
+</html>

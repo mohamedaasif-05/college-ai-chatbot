@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Campus Gallery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            text-align: center;
+        }
+
+        .header {
+            padding: 30px 20px;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .gallery-card {
+            background: white;
+            color: black;
+            width: 320px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            transition: 0.4s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-10px) scale(1.03);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .gallery-card p {
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .back-btn {
+            margin: 40px;
+        }
+
+        .back-btn a {
+            text-decoration: none;
+            background: linear-gradient(45deg,#ffcc00,#ffaa00);
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: black;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .back-btn a:hover {
+            background: linear-gradient(45deg,#ffaa00,#ff8800);
+        }
+
+        @media(max-width: 768px){
+            .gallery-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    Nandha College of Technology - Campus Gallery
+</div>
+
+<div class="gallery-container">
+
+    <div class="gallery-card">
+        <img src="D:\Hackathon College photos samples\unnamed.webp" alt="Campus Building">
+        <p>Main Academic Block - Modern Infrastructure</p>
+    </div>
+
+    <div class="gallery-card">
+        <img src="https://media.istockphoto.com/id/1740123848/photo/group-of-computers-in-computer-lab.jpg?s=612x612&w=0&k=20&c=7eVjoawQAh5_leTME17pM2qvA1_WY2vJGNLI-yocLjY=" alt="Laboratory">
+        <p>Advanced Laboratory Facilities</p>
+    </div>
+
+    <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80" alt="Library">
+        <p>Digital Library with Research Resources</p>
+    </div>
+
+    <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80" alt="Events">
+        <p>Vibrant Campus Events & Cultural Programs</p>
+    </div>
+
+    <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="Interview">
+        <p>Campus Placement Drives & Professional Interview Sessions</p>
+    </div>
+
+    <div class="gallery-card">
+        <img src="https://img.freepik.com/free-vector/realistic-american-football-stadium_52683-54053.jpg?semt=ais_user_personalization&w=740&q=80" alt="Football Match">
+        <p>Students Playing Football in Campus Sports Ground</p>
+    </div>
+
+    <div class="gallery-card">
+        <img src="https://media.gettyimages.com/id/607003083/video/group-of-university-students-studying-on-computer-in-the-classroom-sonipat-haryana-india.jpg?s=640x640&k=20&c=_hzBHFycHx_5fRv1-wB7X1DZKv8-kyuxlgd9Omuz2sU=" alt="Classroom">
+        <p>Interactive Classroom Learning with College Students</p>
+    </div>
+
+    <!-- ✅ NEW HOSTEL IMAGE -->
+    <div class="gallery-card">
+        <img src="https://media.istockphoto.com/id/1208347853/photo/young-friends-planning-trip-in-hostel.jpg?s=612x612&w=0&k=20&c=bUBKiZUt57zWGeWVAzNPOA8f3EODPfge9vJlzb3uGjQ=" alt="Modern Hostel">
+        <p>Modern, Safe & Comfortable Hostel Accommodation</p>
+    </div>
+
+</div>
+
+<div class="back-btn">
+    <a href="index.html">Back to Home</a>
+</div>
+
+</body>
+</html>

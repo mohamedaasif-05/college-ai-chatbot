@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nandha College of Technology - Departments</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#141e30,#243b55);
+color:white;
+text-align:center;
+}
+
+/* Back Button */
+
+.back-btn{
+position:absolute;
+top:20px;
+left:20px;
+}
+
+.back-btn button{
+padding:8px 18px;
+background:#ffcc00;
+border:none;
+border-radius:25px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.back-btn button:hover{
+background:#ffaa00;
+}
+
+/* Header */
+
+.header{
+padding:60px 20px 20px;
+font-size:32px;
+font-weight:bold;
+}
+
+/* Department Grid */
+
+.dept-container{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+padding:30px;
+max-width:1100px;
+margin:auto;
+}
+
+/* Department Card */
+
+.dept-card{
+background:white;
+color:black;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+transition:0.3s;
+}
+
+.dept-card:hover{
+transform:translateY(-8px);
+}
+
+.dept-card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.dept-card h3{
+margin:15px 0 10px;
+}
+
+.dept-card p{
+padding:0 15px 20px;
+font-size:14px;
+color:#555;
+}
+
+/* Footer */
+
+.footer{
+margin-top:40px;
+padding:20px;
+background:rgba(0,0,0,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="back-btn">
+<a href="chatbot.html">
+<button>← Back to Chatbot</button>
+</a>
+</div>
+
+<div class="header">
+Nandha College of Technology - Departments
+</div>
+
+<div class="dept-container">
+
+<div class="dept-card">
+<img src="https://www.accurate.in/img/college/1662107573-bachelor-in-computer-science-engineering.jpg" alt="CSE">
+<h3>Computer Science Engineering</h3>
+<p>Focuses on software development, artificial intelligence, data science, and modern computing technologies.</p>
+</div>
+
+<div class="dept-card">
+<img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758" alt="ECE">
+<h3>Electronics & Communication Engineering</h3>
+<p>Specializes in embedded systems, communication technology, signal processing, and VLSI design.</p>
+</div>
+
+<div class="dept-card">
+<img src="https://www.drngpit.ac.in/assets/images/courses/labs/ug/mechanical.jpg" alt="Mechanical">
+<h3>Mechanical Engineering</h3>
+<p>Deals with machine design, manufacturing technology, robotics, thermodynamics, and industrial systems.</p>
+</div>
+
+<div class="dept-card">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="EEE">
+<h3>Electrical & Electronics Engineering</h3>
+<p>Focuses on electrical systems, power generation, renewable energy, and automation technologies.</p>
+</div>
+
+<div class="dept-card">
+<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e" alt="Civil">
+<h3>Civil Engineering</h3>
+<p>Involves infrastructure development, construction technology, environmental engineering, and structural design.</p>
+</div>
+
+<div class="dept-card">
+<img src="https://ccitraining.edu/wp-content/uploads/2023/12/Information-Technology-1024x576.jpg" alt="IT">
+<h3>Information Technology</h3>
+<p>Focuses on networking, cloud computing, cybersecurity, web development, and database technologies.</p>
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 Nandha College of Technology | All Rights Reserved
+</div>
+
+</body>
+</html>

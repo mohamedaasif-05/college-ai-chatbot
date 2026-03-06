@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nandha College of Technology</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #004e92, #000428);
+    color: white;
+    text-align: center;
+}
+
+/* Header */
+.header {
+    padding: 40px 20px 10px;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Sub heading */
+.sub-header {
+    font-size: 18px;
+    margin-bottom: 40px;
+    color: #ddd;
+}
+
+/* Card Container */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* Individual Card */
+.card {
+    background: white;
+    color: black;
+    width: 280px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card h3 {
+    margin: 15px 0 10px;
+}
+
+.card p {
+    padding: 0 15px 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Chatbot Button */
+.chatbot-btn {
+    margin: 40px 0;
+}
+
+.chatbot-btn a {
+    text-decoration: none;
+}
+
+.chatbot-btn button {
+    padding: 15px 30px;
+    background: #ffcc00;
+    color: black;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.chatbot-btn button:hover {
+    background: #ffaa00;
+    box-shadow: 0 0 15px #ffcc00;
+}
+
+/* Footer */
+.footer {
+    padding: 20px;
+    font-size: 14px;
+    background: rgba(0,0,0,0.3);
+    margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    Nandha College of Technology
+</div>
+
+<div class="sub-header">
+    Excellence in Engineering Education
+</div>
+
+<div class="card-container">
+
+    <!-- ✅ Placement Image (Interview Scene) -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="100% Placement">
+        <h3>100% Placement</h3>
+        <p>Strong industry partnerships and career guidance ensuring excellent placement opportunities for students.</p>
+    </div>
+
+    <!-- ✅ Best Coaching (Classroom Teaching) -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Best Coaching">
+        <h3>Best Coaching</h3>
+        <p>Highly experienced faculty members providing practical and industry-oriented training.</p>
+    </div>
+
+    <!-- ✅ World Class Education (Modern Campus Building) -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1576495199011-eb94736d05d6?auto=format&fit=crop&w=800&q=80" alt="World Class Education">
+        <h3>World Class Education</h3>
+        <p>Modern infrastructure and advanced learning methods for global-level education standards.</p>
+    </div>
+
+</div>
+
+<div class="chatbot-btn">
+    <a href="./chatbot.html">
+        <button>Open Campus Special Chatbot</button>
+    </a>
+</div>
+
+<div class="footer">
+    © 2026 Nandha College of Technology | All Rights Reserved
+</div>
+
+</body>
+</html>

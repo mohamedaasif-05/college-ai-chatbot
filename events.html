@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nandha College of Technology - Campus Events</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#141e30,#243b55);
+    color:white;
+    text-align:center;
+}
+
+/* Back Button */
+.top-back-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+}
+
+.top-back-btn button{
+    padding:8px 18px;
+    background:#ffcc00;
+    border:none;
+    border-radius:25px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.top-back-btn button:hover{
+    background:#ffaa00;
+}
+
+/* Header */
+.header{
+    padding:60px 20px 10px;
+    font-size:32px;
+    font-weight:bold;
+}
+
+.sub-header{
+    font-size:18px;
+    margin-bottom:30px;
+    color:#ddd;
+}
+
+/* Section title */
+.section-title{
+    margin-top:40px;
+    font-size:24px;
+}
+
+/* Gallery */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+/* Cards */
+.card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card p{
+    color:black;
+    padding:12px;
+    font-weight:500;
+}
+
+/* Footer */
+.footer{
+    margin-top:40px;
+    padding:20px;
+    background:rgba(0,0,0,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Back Button -->
+<div class="top-back-btn">
+<a href="chatbot.html">
+<button>← Back to Chatbot</button>
+</a>
+</div>
+
+<div class="header">
+Nandha College of Technology
+</div>
+
+<div class="sub-header">
+Campus Events & Student Activities
+</div>
+
+
+<!-- Technical Events -->
+<div class="section-title">
+Technical Events
+</div>
+
+<div class="gallery">
+
+<div class="card">
+<img src="https://anurag.ac.in/wp-content/uploads/2024/08/IT-Tech-Fest.jpg">
+<p>National Level Technical Symposium</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1531482615713-2afd69097998">
+<p>Hackathon & Coding Competition</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c">
+<p>Project Expo & Innovation Showcase</p>
+</div>
+
+</div>
+
+
+<!-- Non Technical Events -->
+<div class="section-title">
+Non-Technical Events
+</div>
+
+<div class="gallery">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1506157786151-b8491531f063">
+<p>Annual Cultural Festival</p>
+</div>
+
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_rfKLaJGeHmC5ot6wdCD5k20BFFiDgd132Q&s">
+<p>Music, Dance & Talent Shows</p>
+</div>
+
+<div class="card">
+<img src="https://cdn.plus.fifa.com/images/public/cms/84/ff/35/13/84ff3513-cc6a-4785-baf3-088b1c1ceaf7.jpg?width=1200&height=630">
+<p>Sports & Fun Competitions</p>
+</div>
+
+</div>
+
+
+<div class="footer">
+© 2026 Nandha College of Technology | Campus Events
+</div>
+
+</body>
+</html>
