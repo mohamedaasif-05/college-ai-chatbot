@@ -168,7 +168,7 @@ This AI chatbot solves that problem by providing instant responses and acting as
 ## ▶️ Running the Project
 
 Clone the repository
-git clone (https://mohamedaasif-05.github.io/college-ai-chatbot/)
+git config --global user.name "mohamedaasif-05"
 
 
 Open project folder
@@ -195,9 +195,9 @@ Start chatting with AI chatbot 🎉
 
 I and my team mates were work hardly and built this Assistant to reduce the workload in out college admin office with simple and user friendly responses and replies to our users.
 
-Special credits to all of my friends
-Special Credits to 
-@
+Special credits to all of my friends, especially
+Special Credits to my dearest friend:
+### @Hari7609
 
 This system improves accessibility, reduces manual effort, and enhances student engagement.
 
